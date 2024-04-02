@@ -9,6 +9,17 @@ RED='\033[0;31m'
 LG='\033[1;32m'
 PUR='\033[0;35m'
 
+# prompting for choice
+while true; do
+    read -p "Remove some python packages which are corrupted from /usr/lib/python3.11/site-packages/proton* (y/n)?" yn
+    case $yn in
+        [Yy]* ) sudo rm -r /usr/lib/python3.11/site-packages/proton*; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
 echo -e "${BO}=====================[${RED}Installing dependencies...${BO}]=====================${NC}"
 sudo pacman -S git python python-pythondialog python-pyxdg python-keyring python-jinja python-distro python-systemd python-requests python-bcrypt python-gnupg python-pyopenssl
 echo -e "${BO}===================[${RED}Downloading AUR dependencies...${BO}]==================${NC}"
